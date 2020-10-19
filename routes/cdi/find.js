@@ -5,6 +5,7 @@ const _ = require('lodash');
 
 router.get('/', (req, res) => {
     let name = decodeURI(req.query.name);
+    let page = decodeURI(req.query.page) || 0;
     Cdi.aggregate([
         // {
         //     $addFields: {
@@ -35,7 +36,8 @@ router.get('/', (req, res) => {
         }
     ])
     .sort({ name: 1 })
-    // .limit(10)
+    .skip(10 * page)
+    .limit(10)
     .exec(function (err, options) {
         if (err) {
             return res.status(400).json({ message: 'An error has occured.' });
