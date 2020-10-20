@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
     Surface.aggregate([
         {
             $match: {
-                name : { $regex: new RegExp(escape(name),'i') },
+                name : { $regex: new RegExp(`^${escape(name)}`,'i') },
             }
         },
         {

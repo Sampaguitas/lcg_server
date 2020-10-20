@@ -7,26 +7,9 @@ router.get('/', (req, res) => {
     let name = decodeURI(req.query.name);
     let page = decodeURI(req.query.page) || 0;
     Cdi.aggregate([
-        // {
-        //     $addFields: {
-        //         boeDateX: { $dateToString: { format, date: "$boeDate" } },
-        //         totalNetWeightX: { $toString: "$totalNetWeight" },
-        //         totalGrossWeightX: { $toString: "$totalGrossWeight" },
-        //         totalPriceX: { $toString: "$totalPrice" },
-        //         hasFile: {
-        //             $cond: {
-        //                 if: {
-        //                     $eq: ["$fileName", ""]
-        //                 },
-        //                 then: false,
-        //                 else: true
-        //             }
-        //         },
-        //     }
-        // },
         {
             $match: {
-                name : { $regex: new RegExp(escape(name),'i') },
+                name : { $regex: new RegExp(`^${escape(name)}`,'i') },
             }
         },
         {
