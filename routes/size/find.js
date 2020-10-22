@@ -11,8 +11,7 @@ router.get('/', (req, res) => {
             $match: {
                 $or: [
                     { mm : { $regex: new RegExp(`^${escape(name)}`,'i') } }, 
-                    { inch : { $regex: new RegExp(`^${escape(name)}`,'i') } },
-                    { _id : { $regex: new RegExp(`^${escape(name)}`,'i') } }, 
+                    { inch : { $regex: new RegExp(`^${escape(name)}`,'i') } }, 
                 ]
             }
         },

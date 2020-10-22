@@ -9,11 +9,7 @@ router.get('/', (req, res) => {
     Cdi.aggregate([
         {
             $match: {
-                $or: [
-                    { name : { $regex: new RegExp(`^${escape(name)}`,'i') } },
-                    { _id : { $regex: new RegExp(`^${escape(name)}`,'i') } },
-                ]
-                
+                name : { $regex: new RegExp(`^${escape(name)}`,'i') } 
             }
         },
         {
