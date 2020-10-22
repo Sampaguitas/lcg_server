@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
                     $cond: [
                         {$not: ["$inch"]},
                         "$mm",
-                        { $concat: [ "$mm", " | ", "$inch", " | ", "$_id" ] }
+                        { $concat: [ "$mm", " | ", "$inch" ] }
                     ]
                 }
             }

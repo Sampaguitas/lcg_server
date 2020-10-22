@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
         },
         {
             $project: {
-                name: { $concat: [ "name", " | ", "$_id" ] }
+                name: 1
             }
         }
     ])
