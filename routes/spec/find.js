@@ -9,12 +9,16 @@ router.get('/', (req, res) => {
     Spec.aggregate([
         {
             $match: {
-                name : { $regex: new RegExp(`^${escape(name)}`,'i') },
+                $or: [
+                    { name : { $regex: new RegExp(`^${escape(name)}`,'i') } },
+                    { _id : { $regex: new RegExp(`^${escape(name)}`,'i') } },
+                ]
+                
             }
         },
         {
             $project: {
-                name: 1,
+                name: { $concat: [ "name", " | ", "$_id" ] }
             }
         }
     ])
