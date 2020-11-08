@@ -1,17 +1,5 @@
 const express = require('express');
 const router = express.Router();
-// const Cdi = require('../../models/Cdi');
-// const Certificate = require('../../models/Certificate');
-// const End = require('../../models/End');
-// const Grade = require('../../models/Grade');
-// const Heat = require('../../models/Heat');
-// const Length = require('../../models/Length');
-// const Other = require('../../models/Other');
-// const Size = require('../../models/Size');
-// const Spec = require('../../models/Spec');
-// const Supplier = require('../../models/Supplier');
-// const Surface = require('../../models/Surface');
-// const Type = require('../../models/Type');
 const _ = require('lodash');
 
 router.get('/', async (req, res) => {
@@ -22,7 +10,6 @@ router.get('/', async (req, res) => {
     if (!/^[0-9A-F]{40}$/.test(lunar)) {
         return res.status(400).json({message: 'wrong format'});
     } else {
-        
         
         let params = {
             sizeOne: { _id: lunar.slice(0,3), path: 'size', obj: require('../../models/Size') },
