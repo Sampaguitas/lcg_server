@@ -49,7 +49,7 @@ function getName(params, key) {
                 if (!!err || !res || !res.mm) {
                     resolve([[key], {_id:  params[key]._id, name: ''}]);
                 } else {
-                    resolve([[key], !!res.in ? {_id: params[key]._id, name: `${res.mm} | ${res.in}`} : {_id: params[key]._id, name: res.mm} ]);
+                    resolve([[key], !!res.inch ? {_id: params[key]._id, name: `${res.mm} | ${res.inch}`} : {_id: params[key]._id, name: res.mm} ]);
                 }
             }).lean();
         } else {
